@@ -1,0 +1,47 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+
+# Gradle build files
+.gradle/
+build/
+out/
+
+# IntelliJ IDEA files
+*.iml
+.idea/
+*.ipr
+*.iws
+
+# Logs
+logs/
+*.log
+
+# Temporary files
+*.class
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.tmp
+*.swp
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Spring Boot specific
+target/
+!src/main/resources/static/
+!src/main/resources/templates/
+
+# Environment files
+.env
+*.properties
+application-*.yml
+application-*.properties
+
+# Test reports
+test-output/
+surefire-reports/

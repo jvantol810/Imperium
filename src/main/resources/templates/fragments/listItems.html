@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="listItems (items, listName)">
+    <table class="table table-striped">
+        <thead class="thead-dark">
+        <tr>
+            <th>Complete</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Due Date</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="item : ${items}" th:classappend="${item.completed} ? 'completed'">
+            <td>
+                <input type="checkbox" th:checked="${item.completed}" th:data-url="@{'/list/' + ${listName} + '/item/' + ${item.id}}" onclick="completeItem(this)"/>
+            </td>
+            <td th:text="${item.title}"></td>
+            <td th:text="${item.description}"></td>
+            <td th:text="${item.dueDate}"></td>
+            <td>
+                <button type="button" class="btn btn-primary btn-sm" th:data-id="${item.id}" th:data-title="${item.title}" th:data-description="${item.description}" th:data-dueDate="${item.dueDate}" onclick="editItem(this.getAttribute('data-id'), this.getAttribute('data-title'), this.getAttribute('data-description'), this.getAttribute('data-dueDate'))">Edit</button>
+                <button type="button" class="btn btn-danger btn-sm" th:data-url="@{'/list/' + ${listName} + '/item/' + ${item.id}}" onclick="deleteItem(this)">Delete</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="modal">
+  <div class="modal fade" id="editItemModal" tabindex="-1" role="dialog" aria-labelledby="editItemModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editItemModalLabel">Edit Item</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form id="editItemForm">
+            <div class="form-group">
+              <label for="editTitle">Title</label>
+              <input type="text" class="form-control" id="editTitle" required>
+            </div>
+            <div class="form-group">
+              <label for="editDescription">Description</label>
+              <input type="text" class="form-control" id="editDescription">
+            </div>
+            <div class="form-group">
+              <label for="editDueDate">Due Date</label>
+              <input type="date" class="form-control" id="editDueDate">
+            </div>
+            <input type="hidden" id="editItemId">
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary"
+                  onclick="updateItem(document.getElementById('editItemId').value, document.getElementById('editTitle').value, document.getElementById('editDescription').value, document.getElementById('editDueDate').value, this.getAttribute('data-url'))">
+            Save changes
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</html>
