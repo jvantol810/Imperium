@@ -12,5 +12,5 @@ public class ToDoListItem {
     String description;
     boolean completed;
     Date creationTime;
-    Date dueDate;
+    String dueDate;
 }

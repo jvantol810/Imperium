@@ -22,6 +22,7 @@ function completeItem(checkbox) {
 }
 
 function updateItem(itemId, title, description, dueDate, url) {
+    console.log("Due date is " + dueDate);
     const updatedItem = {
         title: title,
         description: description,
@@ -89,17 +90,10 @@ function deleteItem(button) {
     });
 }
 
-function parseDate(dateString) {
-    const date = new Date(dateString);
-    const userTimezoneOffset = date.getTimezoneOffset() * 60000;
-    const adjustedDate = new Date(date.getTime() - userTimezoneOffset);
-    return adjustedDate.toISOString().split('T')[0];
-}
-
 function editItem(itemId, title, description, dueDate) {
     document.getElementById('editTitle').value = title;
     document.getElementById('editDescription').value = description;
-    document.getElementById('editDueDate').value = parseDate(dueDate);
+    document.getElementById('editDueDate').value = dueDate;
     document.getElementById('editItemId').value = itemId;
 
     const listName = document.querySelector('h1').innerText;

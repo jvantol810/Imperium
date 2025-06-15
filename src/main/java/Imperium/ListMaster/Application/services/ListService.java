@@ -151,7 +151,6 @@ public class ListService {
             currentItem.setDueDate(updatedItem.getDueDate());
         }
         currentItem.setCompleted(updatedItem.isCompleted());
-
     }
 
     public void deleteItem(String fileName, String id) throws IOException {
