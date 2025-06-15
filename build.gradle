@@ -26,6 +26,19 @@ repositories {
 // Include the dependencies.gradle file
 apply from: 'dependencies.gradle'
 
+tasks.register('runJarWithToolchain', Exec) {
+	dependsOn tasks.jar
+
+	def jarFile = layout.buildDirectory.file("libs/${project.name}-${project.version}.jar").get().asFile
+
+	def javaLauncher = javaToolchains.launcherFor {
+		languageVersion = JavaLanguageVersion.of(23)
+	}.get()
+
+	executable = javaLauncher.executablePath.asFile.absolutePath
+	args = ['-jar', jarFile.absolutePath]
+}
+
 tasks.named('test') {
 	useJUnitPlatform()
 }
