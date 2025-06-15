@@ -48,6 +48,7 @@ replay_pid*
 /.gradle/8.11.1/gc.properties
 /.gradle/vcs-1/gc.properties
 /.idea/gradle.xml
+.idea/runConfigurations/
 /HELP.md
 /.gradle/8.11.1/fileChanges/last-build.bin
 /build/resources/main/templates/list.html
