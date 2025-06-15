@@ -13,6 +13,9 @@ java {
 	}
 }
 
+// Include the dependencies.gradle file
+apply from: 'dependencies.gradle'
+
 configurations {
 	compileOnly {
 		extendsFrom annotationProcessor
@@ -22,9 +25,6 @@ configurations {
 repositories {
 	mavenCentral()
 }
-
-// Include the dependencies.gradle file
-apply from: 'dependencies.gradle'
 
 tasks.register('runJarWithToolchain', Exec) {
 	dependsOn tasks.jar
