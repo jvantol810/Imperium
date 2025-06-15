@@ -17,11 +17,15 @@ public class ListRestController {
     private ListService listService;
 
     @GetMapping("/list")
-    public List<ToDoListItem> getList(@RequestParam String name, ListItemFilter filter) throws IOException {
+    public List<ToDoListItem> getList(@RequestParam String name) throws IOException {
         List<ToDoListItem> list = listService.loadList(name + ".yaml");
-        if(filter != null && filter.getField() != null && filter.getComparedValue() != null) {
-            return listService.filterList(list, filter);
-        }
+        return list;
+    }
+
+    @GetMapping("/list/{listName}/filterable-fields")
+    public List<ToDoListItem> getFilterableFieldsForList(@RequestParam String name) throws IOException {
+        List<ToDoListItem> list = listService.loadList(name + ".yaml");
+
         return list;
     }
 

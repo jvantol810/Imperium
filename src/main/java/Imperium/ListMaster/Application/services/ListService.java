@@ -1,6 +1,8 @@
 package Imperium.ListMaster.Application.services;
 
 import Imperium.ListMaster.Application.data.ListItemFilter;
+import Imperium.ListMaster.Application.data.ListItemSorting;
+import Imperium.ListMaster.Application.data.SortingMethod;
 import Imperium.ListMaster.Application.data.ToDoListItem;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
@@ -40,6 +42,42 @@ public class ListService {
         List<ToDoListItem> list = mapper.readValue(file, mapper.getTypeFactory().constructCollectionType(List.class, ToDoListItem.class));
         logger.info("Loaded {} items from file: {}", list.size(), fileName);
         return list;
+    }
+
+    public List<ToDoListItem> sortList(List<ToDoListItem> pList, ListItemSorting listItemSorting) throws IOException {
+        logger.info("Sorting list with sorting method: {}", listItemSorting.getSortingMethod());
+        if (listItemSorting.getField() == null || listItemSorting.getSortingMethod() == null) {
+            logger.warn("No sorting field or method provided, returning unsorted list.");
+            return pList;
+        }
+
+        String fieldName = listItemSorting.getField();
+        SortingMethod sortingMethod = listItemSorting.getSortingMethod();
+
+        try {
+            pList.sort((item1, item2) -> {
+                try {
+                    Field field = ToDoListItem.class.getDeclaredField(fieldName);
+                    field.setAccessible(true);
+
+                    Object value1 = field.get(item1);
+                    Object value2 = field.get(item2);
+                    if (value2 == null) {
+                        return -1; // nulls last
+                    }
+                    if (value1 instanceof Comparable && value2 instanceof Comparable) {
+                        int comparison = ((Comparable) value1).compareTo(value2);
+                        return sortingMethod == SortingMethod.ASCENDING ? comparison : -comparison;
+                    }
+                } catch (NoSuchFieldException | IllegalAccessException e) {
+                    logger.error("Error accessing field: {}", fieldName, e);
+                }
+                return 0;
+            });
+        } catch (Exception e) {
+            logger.error("Error sorting list by field: {}", fieldName, e);
+        }
+        return pList;
     }
 
     public List<ToDoListItem> filterList(List<ToDoListItem> pList, ListItemFilter pFilter) throws IOException {

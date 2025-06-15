@@ -2,17 +2,14 @@ package Imperium.ListMaster.Application.services;
 
 import Imperium.ListMaster.Application.data.FilterComparator;
 import Imperium.ListMaster.Application.data.ListItemFilter;
-import Imperium.ListMaster.Application.data.ToDoListItem;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.lang.reflect.Field;
-import java.lang.reflect.Type;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

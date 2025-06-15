@@ -68,13 +68,13 @@
 - id: "0192ab78-09aa-7663-8511-8fdd23704b96"
   title: "this is a new task"
   description: "poopy doopy"
-  completed: false
+  completed: true
   creationTime: null
   dueDate: 1729123200000
 - id: "0192abce-559e-7009-8e32-758cec149580"
   title: "new task"
   description: "i gotta do it for sure"
-  completed: false
+  completed: true
   creationTime: null
   dueDate: 1729382400000
 - id: "0192abce-c903-7009-8e32-7e1faf2ba799"
@@ -107,3 +107,15 @@
   completed: false
   creationTime: null
   dueDate: 1749427200000
+- id: "7f6c0967-957f-4794-a24b-18bf473c2dc0"
+  title: "hello me boy"
+  description: "spongeboob"
+  completed: false
+  creationTime: null
+  dueDate: null
+- id: "ab0a8bbe-c068-41a4-b511-35a885ac661f"
+  title: "damn thats crazy"
+  description: "insane"
+  completed: false
+  creationTime: null
+  dueDate: null

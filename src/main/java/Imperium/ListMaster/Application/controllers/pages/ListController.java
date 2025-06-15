@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import Imperium.ListMaster.Application.data.ListItemFilter;
+import Imperium.ListMaster.Application.data.ListItemSorting;
 import Imperium.ListMaster.Application.data.ToDoListItem;
 import Imperium.ListMaster.Application.services.ListService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,10 +21,16 @@ public class ListController {
     private ListService listService;
 
     @GetMapping("/list-page")
-    public String getListPage(@RequestParam String name, ListItemFilter filter, Model model) throws IOException {
+    public String getListPage(@RequestParam String name,
+                              ListItemFilter filter,
+                              ListItemSorting sorting,
+                              Model model) throws IOException {
         List<ToDoListItem> allItems = listService.loadList(name + ".yaml");
         if (filter != null && filter.getField() != null && filter.getComparedValue() != null) {
             allItems = listService.filterList(allItems, filter);
+        }
+        if (sorting != null && sorting.getField() != null && sorting.getSortingMethod() != null) {
+            allItems = listService.sortList(allItems, sorting);
         }
 
         List<ToDoListItem> nonCompletedItems = allItems.stream()

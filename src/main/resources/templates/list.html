@@ -16,6 +16,8 @@
 
     <button type="button" class="btn btn-primary btn-lg" onclick="openAddItemModal()">Add Item</button>
 
+    <div th:replace="fragments/addFilters :: addFilters()"></div>
+
     <div th:each="itemList, iterStat : ${itemLists}">
         <h2 class="my-4" th:text="${titles[iterStat.index]}"></h2>
         <div th:replace="fragments/listItems :: listItems(${itemList}, ${listName})"></div>

@@ -22,6 +22,8 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 replay_pid*
+/build/
+/out/
 /.gitattributes
 /.idea/.name
 /build/resources/main/templates/fragments/addItemModal.html
@@ -66,6 +68,7 @@ replay_pid*
 /build/tmp/compileJava/previous-compilation-data.bin
 /build/reports/problems/problems-report.html
 /build/resolvedMainClassName
+
 /.gradle/8.11.1/fileHashes/resourceHashesCache.bin
 /.gradle/8.11.1/checksums/sha1-checksums.bin
 /build/resources/main/lists/todolist.yaml
