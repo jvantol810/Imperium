@@ -27,7 +27,7 @@ repositories {
 }
 
 tasks.register('runJarWithToolchain', Exec) {
-	dependsOn tasks.jar
+	dependsOn tasks.build, tasks.jar
 
 	def jarFile = layout.buildDirectory.file("libs/${project.name}-${project.version}.jar").get().asFile
 
