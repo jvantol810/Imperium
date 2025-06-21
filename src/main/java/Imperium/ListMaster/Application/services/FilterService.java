@@ -1,11 +1,18 @@
 package Imperium.ListMaster.Application.services;
 
-import Imperium.ListMaster.Application.data.FilterComparator;
-import Imperium.ListMaster.Application.data.ListItemFilter;
+import Imperium.ListMaster.Application.data.ToDoListItem;
+import Imperium.ListMaster.Application.data.filters.FilterComparator;
+import Imperium.ListMaster.Application.data.filters.FilterSet;
+import Imperium.ListMaster.Application.data.filters.ListItemFilter;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
+import com.fasterxml.jackson.dataformat.yaml.YAMLMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.time.LocalDateTime;
@@ -19,6 +26,37 @@ import java.util.stream.Collectors;
 public class FilterService {
 
     private static final Logger logger = LoggerFactory.getLogger(FilterService.class);
+
+    @Value("${filterSets.filePath}")
+    private String filterSetsFile;
+
+    public List<Object> applySavedFilterSet(List<Object> pList, String pFilterSetName) {
+        try {
+            FilterSet filterSet = loadFilterSet(pFilterSetName);
+            for (ListItemFilter filter : filterSet.getFilters()) {
+                pList = filterList(pList, filter);
+            }
+            return pList;
+        } catch (IOException e) {
+            logger.error("Error loading filter set: {}", pFilterSetName, e);
+            return pList; // Return the original list if there's an error
+        }
+    }
+
+    private FilterSet loadFilterSet(String pFilterSetName) throws IOException {
+        logger.info("Loading filter set: {}", pFilterSetName);
+        File file = new File(filterSetsFile);
+        ObjectMapper mapper = new YAMLMapper(new YAMLFactory());
+
+        // Read all filter sets from the YAML file
+        List<FilterSet> filterSets = mapper.readValue(file, mapper.getTypeFactory().constructCollectionType(List.class, FilterSet.class));
+
+        // Find the filter set with the matching name
+        return filterSets.stream()
+                .filter(filterSet -> pFilterSetName.equals(filterSet.getName()))
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException("Filter set not found: " + pFilterSetName));
+    }
 
     public List<Object> filterList(List<Object> pList, ListItemFilter pFilter) throws IOException {
         // Implement filtering logic based on the property and value

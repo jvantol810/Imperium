@@ -1,10 +1,6 @@
-package Imperium.ListMaster.Application.data;
+package Imperium.ListMaster.Application.data.filters;
 
 import lombok.Data;
-
-import java.lang.reflect.Field;
-import java.util.HashMap;
-import java.util.Map;
 
 @Data
 public class ListItemFilter {

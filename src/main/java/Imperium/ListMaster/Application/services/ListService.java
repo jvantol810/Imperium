@@ -1,6 +1,7 @@
 package Imperium.ListMaster.Application.services;
 
-import Imperium.ListMaster.Application.data.ListItemFilter;
+import Imperium.ListMaster.Application.data.filters.FilterSet;
+import Imperium.ListMaster.Application.data.filters.ListItemFilter;
 import Imperium.ListMaster.Application.data.ListItemSorting;
 import Imperium.ListMaster.Application.data.SortingMethod;
 import Imperium.ListMaster.Application.data.ToDoListItem;
@@ -15,9 +16,7 @@ import org.springframework.stereotype.Service;
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Field;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -85,6 +84,17 @@ public class ListService {
         List<Object> objectList = (List<Object>) (List<?>) pList;
 
         List<Object> filteredObjects = filterService.filterList(objectList, pFilter);
+
+        return filteredObjects.stream()
+                .map(item -> (ToDoListItem) item)
+                .collect(Collectors.toList());
+    }
+
+    public List<ToDoListItem> filterBySavedFilterSet(List<ToDoListItem> pList, String pFilterSetName) throws IOException {
+        // Implement filtering logic based on the property and value
+        List<Object> objectList = (List<Object>) (List<?>) pList;
+
+        List<Object> filteredObjects = filterService.applySavedFilterSet(objectList, pFilterSetName);
 
         return filteredObjects.stream()
                 .map(item -> (ToDoListItem) item)

@@ -1,0 +1,6 @@
+- name: "Default Filter Set"
+  listName: "todolist"
+  filters:
+    - field: "description"
+      comparator: "CONTAINS"
+      comparedValue: "an"

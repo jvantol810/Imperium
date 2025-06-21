@@ -1,4 +1,4 @@
-package Imperium.ListMaster.Application.data;
+package Imperium.ListMaster.Application.data.filters;
 
 public enum FilterComparator {
     EQUALS("EQUALS"),

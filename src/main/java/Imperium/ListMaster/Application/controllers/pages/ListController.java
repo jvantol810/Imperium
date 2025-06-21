@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import Imperium.ListMaster.Application.data.ListItemFilter;
+import Imperium.ListMaster.Application.data.filters.ListItemFilter;
 import Imperium.ListMaster.Application.data.ListItemSorting;
 import Imperium.ListMaster.Application.data.ToDoListItem;
 import Imperium.ListMaster.Application.services.ListService;
