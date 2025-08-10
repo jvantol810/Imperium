@@ -3,7 +3,7 @@
   title: "Call Dr. Siegels Office"
   description: "Ask what is going on with your forms release. You want to release\
     \ all medical forms to yourself."
-  completed: false
+  completed: true
   creationTime: null
   dueDate: "2025-06-16"
 - id: "01924067-9662-7889-ade5-f1ae6256b52b"
@@ -39,7 +39,7 @@
 - id: "019254da-39ef-7884-b1ce-01ca8ccbeca6"
   title: "Call Gennessee Urgent Care"
   description: "Pay your bills over the phone"
-  completed: false
+  completed: true
   creationTime: null
   dueDate: "2025-06-16"
 - id: "01925550-5cda-7bbe-ae0f-b253ea9e20f1"
@@ -87,12 +87,24 @@
 - id: "8ee06329-6230-416b-82b9-6fa70fe82f14"
   title: "Pay for Campsite"
   description: ""
-  completed: false
+  completed: true
   creationTime: null
   dueDate: "2025-06-16"
 - id: "64049554-c26d-499c-ba2e-cf0b62ca9dec"
   title: "Open Michael's Letter for Wedding, Reply"
   description: ""
-  completed: false
+  completed: true
   creationTime: null
   dueDate: "2025-06-16"
+- id: "644d31e1-5e3d-4d5b-9f2d-282ca36b27d4"
+  title: "our brains do that when theres a reason"
+  description: "am i safe am i not safe"
+  completed: true
+  creationTime: null
+  dueDate: ""
+- id: "869cbb6a-e7e5-4cb3-a846-f81aa2f0f889"
+  title: "Buy new Merrel shoes"
+  description: ""
+  completed: false
+  creationTime: null
+  dueDate: ""

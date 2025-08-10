@@ -42,3 +42,34 @@ tasks.register('runJarWithToolchain', Exec) {
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
+// Define values
+def imageName = 'listmaster'
+def containerName = 'listmaster'
+def jarFile = "build/libs/ListMaster-${project.version}.jar"
+
+// Task: Build Docker image
+tasks.register("buildDockerImage", Exec) {
+	dependsOn bootJar  // Ensures JAR is built first
+	commandLine 'docker', 'build', '-t', imageName, '.'
+}
+
+// Task: Run Docker container
+tasks.register("runDockerContainer", Exec) {
+	dependsOn buildDockerImage
+	doFirst {
+		// Optional: stop and remove existing container
+		exec {
+			commandLine 'docker', 'rm', '-f', containerName
+			ignoreExitValue = true
+		}
+	}
+	commandLine 'docker', 'run', '--name', containerName, '-p', '3000:3000', imageName
+}
+
+// Convenience task to do all in one
+tasks.register("buildAndRunDocker") {
+	dependsOn runDockerContainer
+	group = 'docker'
+	description = 'Builds the JAR, builds the Docker image, and runs the container'
+}
