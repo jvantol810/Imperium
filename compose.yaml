@@ -1,0 +1,12 @@
+services:
+  listmaster:
+    build: .
+    ports:
+      - "3000:3000"
+    develop:
+      watch:
+        - action: sync
+          path: .
+          target: /src
+
+    # reserve zrok frontend subdomain and start sharing the target
