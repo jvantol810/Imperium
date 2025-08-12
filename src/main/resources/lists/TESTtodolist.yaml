@@ -30,21 +30,21 @@
   creationTime: null
   dueDate: null
 - id: "01924069-74a3-7889-ade6-17dbf7b26622"
-  title: "Set tools into your going-away zone in the basement lik you should"
-  description: ""
+  title: "Set tools into your going-away zone"
+  description: "you know you gotta do this man"
   completed: false
   creationTime: null
-  dueDate: "1729814400000"
+  dueDate: "2025-08-12"
 - id: "01924419-b819-7990-9aca-2c90c972c251"
   title: "add ability to move todolist items up/down list"
   description: "consider an action menu that pops up with up/down arrows"
-  completed: false
+  completed: true
   creationTime: null
   dueDate: null
 - id: "019254da-39ef-7884-b1ce-01ca8ccbeca6"
   title: "hello"
   description: "this is me, you know how it is"
-  completed: false
+  completed: true
   creationTime: null
   dueDate: "1727913600000"
 - id: "01925550-5cda-7bbe-ae0f-b253ea9e20f1"
@@ -56,7 +56,7 @@
 - id: "0192aaa4-01ba-7bb8-a2f6-2717a3c77e61"
   title: "hello"
   description: "is a me"
-  completed: false
+  completed: true
   creationTime: null
   dueDate: "1729382400000"
 - id: "0192ab70-d6d8-7337-86c6-473044a388cc"
@@ -77,12 +77,6 @@
   completed: true
   creationTime: null
   dueDate: "1729382400000"
-- id: "0192abce-c903-7009-8e32-7e1faf2ba799"
-  title: "i gotta do this"
-  description: "for sure"
-  completed: false
-  creationTime: null
-  dueDate: "1726012800000"
 - id: "0192df38-5d21-7004-8a7e-25d0714e1e0a"
   title: "hello"
   description: "i gott ado dis"
@@ -110,12 +104,12 @@
 - id: "7f6c0967-957f-4794-a24b-18bf473c2dc0"
   title: "hello me boy"
   description: "spongeboob"
-  completed: false
+  completed: true
   creationTime: null
   dueDate: null
 - id: "ab0a8bbe-c068-41a4-b511-35a885ac661f"
   title: "damn thats crazy"
   description: "insane"
-  completed: false
+  completed: true
   creationTime: null
   dueDate: null

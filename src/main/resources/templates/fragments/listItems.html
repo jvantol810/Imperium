@@ -1,30 +1,51 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<div th:fragment="listItems (items, listName)">
-    <table class="table table-striped">
-        <thead class="thead-dark">
-        <tr>
-            <th>Complete</th>
-            <th>Title</th>
-            <th>Description</th>
-            <th>Due Date</th>
-            <th>Actions</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="item : ${items}" th:classappend="${item.completed} ? 'completed'">
-            <td>
-                <input type="checkbox" th:checked="${item.completed}" th:data-url="@{'/list/' + ${listName} + '/item/' + ${item.id}}" onclick="completeItem(this)"/>
-            </td>
-            <td th:text="${item.title}"></td>
-            <td th:text="${item.description}"></td>
-            <td th:text="${item.dueDate}"></td>
-            <td>
-                <button type="button" class="btn btn-primary btn-sm" th:data-id="${item.id}" th:data-title="${item.title}" th:data-description="${item.description}" th:data-dueDate="${item.dueDate}" onclick="editItem(this.getAttribute('data-id'), this.getAttribute('data-title'), this.getAttribute('data-description'), this.getAttribute('data-dueDate'))">Edit</button>
-                <button type="button" class="btn btn-danger btn-sm" th:data-url="@{'/list/' + ${listName} + '/item/' + ${item.id}}" onclick="deleteItem(this)">Delete</button>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+<!--Flexible bootstrap container-->
+<div class="container px-2" th:fragment="listItems (items, listName)">
+<!--    <div class="row">-->
+<!--        <div class="col-xl-2 col-2"></div>-->
+<!--        <div class="col-xl-2 col-4">Title</div>-->
+<!--&lt;!&ndash;        <div class="col-xl-2 col-3">Description</div>&ndash;&gt;-->
+<!--    </div>-->
+    <div class="row border border-dark mb-3" th:each="item : ${items}" th:classappend="${item.completed} ? 'completed'">
+        <div class="col-xl-2 col-1">
+            <input class="completed-checkbox" type="checkbox" th:checked="${item.completed}" th:data-url="@{'/list/' + ${listName} + '/item/' + ${item.id}}" onclick="completeItem(this)"/>
+        </div>
+        <div class="col-xl-2 col-1">
+            <button class="btn btn-sm" type="button" data-toggle="collapse" th:attr="data-target='#description-' + ${item.id}">
+                <i class="fas fa-chevron-down"></i>
+            </button>
+        </div>
+        <div class="col-xl-2 col-8">
+            <span th:text="${item.title}"></span>
+            <div class="collapse" th:id="'description-' + ${item.id}">
+                <span th:text="${item.description}"></span>
+            </div>
+        </div>
+        <div class="col-xl-2 col-1">
+            <button type="button" class="btn btn-primary btn-sm" th:data-id="${item.id}" th:data-title="${item.title}" th:data-description="${item.description}" th:data-dueDate="${item.dueDate}" onclick="editItem(this.getAttribute('data-id'), this.getAttribute('data-title'), this.getAttribute('data-description'), this.getAttribute('data-dueDate'))">
+                <i class="fas fa-pencil-alt"></i>
+            </button>
+            <div class="mb-1"></div>
+            <button type="button" class="btn btn-danger btn-sm" th:data-url="@{'/list/' + ${listName} + '/item/' + ${item.id}}" onclick="deleteItem(this)">
+                <i class="fas fa-trash"></i>
+            </button>
+        </div>
+        <div class="col-xl-2 col-1"></div>
+        <!--            Below the task title-->
+        <div class="col-xl-2 col">
+            <div class="row">
+                <div class="col-xl-2 col-1"></div>
+                <div class="col-xl-2 col-11">
+                    <i class="fas fa-calendar mr-1"></i><span th:text="${item.dueDate}"></span>
+                </div>
+            </div>
+        </div>
+
+<!--        footer-->
+        <!--        <div class="col-xl-12 col-12">-->
+<!--            <span th:text="${item.description}"></span>-->
+<!--        </div>-->
+    </div>
 </div>
 </html>

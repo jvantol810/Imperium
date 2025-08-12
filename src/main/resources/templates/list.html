@@ -1,31 +1,27 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>To-Do List</title>
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        .completed {
-            text-decoration: line-through;
-        }
-    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="/css/liststyles.css" rel="stylesheet">
 </head>
 <body>
-<div class="container">
     <h1 class="my-4" th:text="${listName}"></h1>
 
     <button type="button" class="btn btn-primary btn-lg" onclick="openAddItemModal()">Add Item</button>
 
-    <div th:replace="fragments/addFilters :: addFilters()"></div>
+    <div th:replace="~{fragments/addFilters :: addFilters()}"></div>
 
     <div th:each="itemList, iterStat : ${itemLists}">
         <h2 class="my-4" th:text="${titles[iterStat.index]}"></h2>
-        <div th:replace="fragments/listItems :: listItems(${itemList}, ${listName})"></div>
+        <div th:replace="~{fragments/listItems :: listItems(${itemList}, ${listName})}"></div>
     </div>
-</div>
 <!-- Include the modal fragment -->
-<div th:replace="fragments/editItemModal :: modal"></div>
-<div th:replace="fragments/addItemModal :: modal"></div>
+<div th:replace="~{fragments/editItemModal :: modal}"></div>
+<div th:replace="~{fragments/addItemModal :: modal}"></div>
 <!-- Bootstrap JS and dependencies -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
