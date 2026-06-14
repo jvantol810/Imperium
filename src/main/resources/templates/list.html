@@ -9,15 +9,30 @@
     <link href="/css/liststyles.css" rel="stylesheet">
 </head>
 <body>
-    <h1 class="my-4" th:text="${listName}"></h1>
-
-    <button type="button" class="btn btn-primary btn-lg" onclick="openAddItemModal()">Add Item</button>
-
-    <div th:replace="~{fragments/addFilters :: addFilters()}"></div>
-
-    <div th:each="itemList, iterStat : ${itemLists}">
-        <h2 class="my-4" th:text="${titles[iterStat.index]}"></h2>
-        <div th:replace="~{fragments/listItems :: listItems(${itemList}, ${listName})}"></div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-4">
+                <h1 class="my-4" th:text="${listName}"></h1>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+<!--            <div th:replace="~{fragments/addFilters :: addFilters()}"></div>-->
+            <div class="col-12" th:each="itemList, iterStat : ${itemLists}">
+                <div class="row justify-content-center">
+                    <h2 class="my-4" th:text="${titles[iterStat.index]}"></h2>
+                </div>
+                <div th:if="${iterStat.first == true}" class="row justify-content-center mb-3">
+                    <div class="col-6 h-100 add-item-button">
+                        <button type="button" class="btn d-block w-100 h-100"
+                                onclick="openAddItemModal()">Add Item</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div th:replace="~{fragments/listItems :: listItems(${itemList}, ${listName})}">
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 <!-- Include the modal fragment -->
 <div th:replace="~{fragments/editItemModal :: modal}"></div>

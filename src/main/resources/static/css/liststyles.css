@@ -1,3 +1,29 @@
+:root {
+    --list-item-width: 60%;
+}
+
+@media only screen and (max-width: 400px) {
+    :root {
+        --list-item-width: 80%;
+    }
+}
+
+.list-item {
+    min-height: 100px;
+}
+
+.list-item-title {
+    font-weight: bold;
+}
+
+.list-item-description {
+    font-style: italic;
+}
+
+.add-item-button {
+    border: #81adb8 2px dashed;
+}
+
 .completed {
     text-decoration: line-through;
 }

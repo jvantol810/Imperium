@@ -41,7 +41,7 @@ public class ListController {
                 .collect(Collectors.toList());
 
         List<List<ToDoListItem>> itemLists = Arrays.asList(nonCompletedItems, completedItems);
-        List<String> titles = Arrays.asList("Non-Completed Items", "Completed Items");
+        List<String> titles = Arrays.asList("To-Do", "Completed");
 
         model.addAttribute("listName", name);
         model.addAttribute("itemLists", itemLists);

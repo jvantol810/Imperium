@@ -8,5 +8,3 @@ services:
         - action: sync
           path: .
           target: /src
-
-    # reserve zrok frontend subdomain and start sharing the target
