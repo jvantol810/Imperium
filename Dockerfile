@@ -1,4 +1,4 @@
-FROM openjdk:23-jdk
+FROM eclipse-temurin:23
 ARG JAR_FILE=build/libs/*.jar
 COPY ./build/libs/ListMaster-0.0.1-SNAPSHOT.jar app.jar
 VOLUME /appdata/

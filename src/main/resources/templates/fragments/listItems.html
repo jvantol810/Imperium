@@ -1,45 +1,55 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <!--Flexible bootstrap container-->
-<div class="col-12" th:fragment="listItems (items, listName)">
-    <div class="row justify-content-center mb-3 list-item" th:each="item : ${items}" th:classappend="${item.completed} ? 'completed'">
-        <div class="col-6 border border-dark">
-            <div class="row">
-                <div class="col-1">
-                    <input class="completed-checkbox" type="checkbox" th:checked="${item.completed}" th:data-url="@{'/list/' + ${listName} + '/item/' + ${item.id}}" onclick="completeItem(this)"/>
-                </div>
-                <div class="col-6">
+<div class="col-xl-9 col-12" th:fragment="listItems (items, listName)">
+    <div class="row justify-content-center align-items-stretch mb-3" th:each="item : ${items}" th:classappend="${item.completed} ? 'completed'">
+        <div class="col-xl-8 col-11 border border-dark list-item">
+            <div class="row d-flex align-items-stretch" style="min-height: 100px;">
+                <div class="col-xl-10 col-9 d-flex flex-column">
                     <div class="row">
-<!--                        <div class="col-1">-->
-<!--                            <button class="btn btn-sm" type="button" data-toggle="collapse" th:attr="data-target='#description-' + ${item.id}">-->
-<!--                                <i class="fas fa-chevron-down"></i>-->
-<!--                            </button>-->
-<!--                        </div>-->
-                        <div class="col-12">
-                            <span class="list-item-title" th:text="${item.title}"></span>
-                            <div class="list-item-description" th:id="'description-' + ${item.id}">
-                                <span th:text="${item.description}"></span>
+                        <div class="col-10 d-flex flex-column">
+                            <div class="row">
+                                <div class="col-1">
+                                    <input class="completed-checkbox" type="checkbox" th:checked="${item.completed}" th:data-url="@{'/list/' + ${listName} + '/item/' + ${item.id}}" onclick="completeItem(this)"/>
+                                </div>
+                                <div class="col-10">
+                                    <div class="row">
+                                        <!--                        <div class="col-1">-->
+                                        <!--                            <button class="btn btn-sm" type="button" data-toggle="collapse" th:attr="data-target='#description-' + ${item.id}">-->
+                                        <!--                                <i class="fas fa-chevron-down"></i>-->
+                                        <!--                            </button>-->
+                                        <!--                        </div>-->
+                                        <div class="col-12">
+                                            <div class="row">
+                                                <div class="col-10">
+                                                    <span class="list-item-title" th:text="${item.title}"></span>
+                                                    <div class="list-item-description" th:id="'description-' + ${item.id}">
+                                                        <span th:text="${item.description}"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <div class="row mt-auto">
+                        <div class="col-xl-7 col-6">
+                            <i class="fas fa-calendar mr-1"></i><span class="small" th:text="${item.dueDate}"></span>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-5">
-                    <div class="row">
-                        <div class="col-7">
-                            <i class="fas fa-calendar mr-1"></i><span th:text="${item.dueDate}"></span>
-                        </div>
-
-                        <div class="col-2">
-                            <button type="button" class="btn btn-primary btn-sm" th:data-id="${item.id}" th:data-title="${item.title}" th:data-description="${item.description}" th:data-dueDate="${item.dueDate}" onclick="editItem(this.getAttribute('data-id'), this.getAttribute('data-title'), this.getAttribute('data-description'), this.getAttribute('data-dueDate'))">
-                                <i class="fas fa-pencil-alt"></i>
-                            </button>
-                        </div>
-
-                        <div class="col-2">
-                            <button type="button" class="btn btn-danger btn-sm" th:data-url="@{'/list/' + ${listName} + '/item/' + ${item.id}}" onclick="deleteItem(this)">
-                                <i class="fas fa-trash"></i>
-                            </button>
-                        </div>
+                <div class="col-xl-2 col-3 d-flex flex-column">
+                    <div class="row flex-fill w-100 mx-0 d-flex">
+                        <button type="button" class="btn btn-primary flex-fill w-100" th:data-id="${item.id}" th:data-title="${item.title}" th:data-description="${item.description}" th:data-dueDate="${item.dueDate}" onclick="editItem(this.getAttribute('data-id'), this.getAttribute('data-title'), this.getAttribute('data-description'), this.getAttribute('data-dueDate'))">
+                            <i class="fas fa-pencil-alt"></i>
+                        </button>
+                    </div>
+                    <div class="row flex-fill w-100 mx-0 d-flex">
+                        <button type="button" class="btn btn-danger flex-fill w-100" th:data-url="@{'/list/' + ${listName} + '/item/' + ${item.id}}" onclick="deleteItem(this)">
+                            <i class="fas fa-trash"></i>
+                        </button>
                     </div>
                 </div>
             </div>

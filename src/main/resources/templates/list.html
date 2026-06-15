@@ -22,12 +22,12 @@
                     <h2 class="my-4" th:text="${titles[iterStat.index]}"></h2>
                 </div>
                 <div th:if="${iterStat.first == true}" class="row justify-content-center mb-3">
-                    <div class="col-6 h-100 add-item-button">
+                    <div class="col-xl-6 col-11 h-100 add-item-button">
                         <button type="button" class="btn d-block w-100 h-100"
                                 onclick="openAddItemModal()">Add Item</button>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row justify-content-center">
                     <div th:replace="~{fragments/listItems :: listItems(${itemList}, ${listName})}">
                     </div>
                 </div>
