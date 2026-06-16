@@ -1,8 +1,8 @@
 services:
   listmaster:
-    build: .
+    image: listmaster:latest
     ports:
-      - "3000:3000"
+      - "8090:3000"
     develop:
       watch:
         - action: sync
