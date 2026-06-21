@@ -1,0 +1,10 @@
+- name: "todaysTasks"
+  listName: "TESTtodolist"
+  set:
+    OR:
+      - field: "completedAt"
+        comparator: "EQUALS"
+        comparedValue: "today"
+      - field: "completed"
+        comparator: "EQUALS"
+        comparedValue: "false"

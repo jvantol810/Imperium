@@ -1,6 +1,5 @@
 package Imperium.ListMaster.Application;
 
-import Imperium.ListMaster.Application.data.ToDoListItem;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

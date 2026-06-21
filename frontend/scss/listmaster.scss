@@ -1,0 +1,94 @@
+// Custom Listmaster Defaults
+$listmaster-default-text-color: #f8e7ff;
+$listmaster-default-red: #ff8ec3;
+$listmaster-default-blue: #8099ff;
+$listmaster-default-light: #f8e7ff;
+$listmaster-default-orange: #ffce6d;
+
+// Global Bootstrap Overrides BEFORE IMPORT -- this is necessary because some attributes are defined via SVG
+$form-check-input-checked-bg-color: $listmaster-default-orange;
+$form-check-input-checked-border-color: $listmaster-default-orange;
+
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+// Custom Listmaster Backgrounds
+$listmaster-body-background: #1F2430;
+$listmaster-modal-background: #6B7280;
+
+// Global Bootstrap Overrides
+:root {
+  --bs-body-bg: #1F2430;
+  --bs-body-color: #{$listmaster-default-text-color};
+}
+
+@include media-breakpoint-down(sm) {
+  body {
+    font-size: 0.875rem; // smaller font on small screens
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  body {
+    font-size: 1.125rem; // larger font on large screens
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #{$listmaster-default-text-color} !important;
+}
+
+// Custom Listmaster Classes
+.listmaster-btn-sharp {
+  --bs-btn-border-radius: 0;
+}
+
+.listmaster-fx-border-glow {
+  -webkit-box-shadow: 0px 0px 6px 2px currentColor;
+  box-shadow: 0px 0px 6px 2px currentColor;
+}
+
+.listmaster-border-light {
+  --bs-btn-border-color: #{$listmaster-default-light};
+}
+
+.listmaster-btn-light {
+  --bs-btn-font-weight: 600;
+  --bs-btn-color: #{$listmaster-default-light};
+  --bs-btn-border-color: #{$listmaster-default-light};
+  --bs-btn-hover-color: #{shade-color($listmaster-default-light, 60%)};
+  --bs-btn-hover-bg: #{shade-color($listmaster-default-light, 10%)};
+  --bs-btn-hover-border-color: #{shade-color($listmaster-default-light, 10%)};
+  --bs-btn-focus-shadow-rgb: to-rgb($listmaster-default-light);
+  --bs-btn-active-color: #{shade-color($listmaster-default-light, 10%)};
+  --bs-btn-active-bg: #{shade-color($listmaster-default-light, 20%)};
+  --bs-btn-active-border-color: #{shade-color($listmaster-default-light, 20%)};
+  -webkit-box-shadow: 0px 0px 6px 5px rgba($listmaster-default-light, 0.9);
+}
+
+.listmaster-btn-blue {
+  --bs-btn-font-weight: 600;
+  --bs-btn-color: #{$listmaster-default-blue};
+  --bs-btn-border-color: #{$listmaster-default-blue};
+  --bs-btn-hover-color: #{tint-color($listmaster-default-blue, 60%)};
+  --bs-btn-hover-bg: #{shade-color($listmaster-default-blue, 10%)};
+  --bs-btn-hover-border-color: #{shade-color($listmaster-default-blue, 10%)};
+  --bs-btn-focus-shadow-rgb: to-rgb($listmaster-default-blue);
+  --bs-btn-active-color: #{shade-color($listmaster-default-blue, 10%)};
+  --bs-btn-active-bg: #{shade-color($listmaster-default-blue, 20%)};
+  --bs-btn-active-border-color: #{shade-color($listmaster-default-blue, 20%)};
+  -webkit-box-shadow: 0px 0px 6px 5px rgba($listmaster-default-blue, 0.9);
+}
+
+.listmaster-btn-red {
+  --bs-btn-font-weight: 600;
+  --bs-btn-color: #{$listmaster-default-red};
+  --bs-btn-border-color: #{$listmaster-default-red};
+  --bs-btn-hover-color: #{tint-color($listmaster-default-red, 60%)};
+  --bs-btn-hover-bg: #{shade-color($listmaster-default-red, 10%)};
+  --bs-btn-hover-border-color: #{shade-color($listmaster-default-red, 10%)};
+  --bs-btn-focus-shadow-rgb: to-rgb($listmaster-default-red);
+  --bs-btn-active-color: #{shade-color($listmaster-default-red, 10%)};
+  --bs-btn-active-bg: #{shade-color($listmaster-default-red, 20%)};
+  --bs-btn-active-border-color: #{shade-color($listmaster-default-red, 20%)};
+  -webkit-box-shadow: 0px 0px 6px 5px rgba($listmaster-default-red, 0.9);
+}

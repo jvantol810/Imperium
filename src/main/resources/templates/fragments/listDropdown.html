@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<div class="row justify-content-center" th:fragment="listDropdown (currentListName, allListNames)">
+    <div class="row justify-content-center">
+        <div class="col-4 d-flex justify-content-center dropdown">
+            <h1 class="my-4 text-center" th:text="${currentListName}"></h1>
+            <button class="btn btn-lg dropdown-toggle text-decoration-none"
+                    id="listHeaderDropdown"
+                    type="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false">
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="listHeaderDropdown">
+                <li th:each="listName : ${allListNames}">
+                    <a class="dropdown-item"
+                       href="#"
+                       th:text="${listName}"
+                       th:attr="data-list-name=${listName}"
+                       onclick="selectList(this.dataset.listName); return false;">
+                        List Name
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+</html>

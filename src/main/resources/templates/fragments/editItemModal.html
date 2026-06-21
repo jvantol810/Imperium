@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <div th:fragment="modal">
-  <div class="modal fade" id="editItemModal" tabindex="-1" role="dialog" aria-labelledby="editItemModalLabel" aria-hidden="true">
+  <div class="modal fade" id="edit-item-modal" tabindex="-1" role="dialog" aria-labelledby="edit-item-modal-label" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="editItemModalLabel">Edit Item</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+          <h5 class="modal-title" id="edit-item-modal-label">Edit Item</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <form id="editItemForm">
@@ -18,7 +16,7 @@
             </div>
             <div class="form-group">
               <label for="editDescription">Description</label>
-              <input type="text" class="form-control" id="editDescription">
+              <textarea type="text" class="form-control" id="editDescription"></textarea>
             </div>
             <div class="form-group">
               <label for="editDueDate">Due Date</label>
@@ -28,9 +26,12 @@
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary"
-                  onclick="updateItem(document.getElementById('editItemId').value, document.getElementById('editTitle').value, document.getElementById('editDescription').value, document.getElementById('editDueDate').value, this.getAttribute('data-url'))">
+          <button type="button" class="btn listmaster-btn-light" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn listmaster-btn-blue save-button"
+                  onclick="updateItem(document.getElementById('editItemId').value,
+                  document.getElementById('editTitle').value,
+                  document.getElementById('editDescription').value,
+                  document.getElementById('editDueDate').value, this.getAttribute('data-url'))">
             Save changes
           </button>
         </div>

@@ -1,0 +1,7 @@
+- name: "To-Do"
+  listName: "todolist"
+  itemSorting:
+      field: "creationTime"
+      sortingMethod: "DESCENDING"
+  filterSetNames:
+    - "todaysTasks"

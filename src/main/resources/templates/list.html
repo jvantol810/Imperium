@@ -4,31 +4,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>To-Do List</title>
     <!-- Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/listmaster.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link href="/css/liststyles.css" rel="stylesheet">
 </head>
 <body>
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-4">
-                <h1 class="my-4" th:text="${listName}"></h1>
-            </div>
-        </div>
+        <div th:replace="~{fragments/listDropdown :: listDropdown (${currentListName}, ${allListNames})}"></div>
+        <div th:replace="~{fragments/listViewDropdown :: listViewDropdown (${currentListViewName}, ${allListViewNames})}"></div>
         <div class="row justify-content-center">
 <!--            <div th:replace="~{fragments/addFilters :: addFilters()}"></div>-->
             <div class="col-12" th:each="itemList, iterStat : ${itemLists}">
-                <div class="row justify-content-center">
-                    <h2 class="my-4" th:text="${titles[iterStat.index]}"></h2>
-                </div>
                 <div th:if="${iterStat.first == true}" class="row justify-content-center mb-3">
-                    <div class="col-xl-6 col-11 h-100 add-item-button">
-                        <button type="button" class="btn d-block w-100 h-100"
+                    <div class="col-xl-6 col-11 h-100 listmaster-btn-light p-0">
+                        <button type="button" class="btn d-block w-100 h-100 listmaster-btn-sharp"
                                 onclick="openAddItemModal()">Add Item</button>
                     </div>
                 </div>
                 <div class="row justify-content-center">
-                    <div th:replace="~{fragments/listItems :: listItems(${itemList}, ${listName})}">
+                    <div th:replace="~{fragments/listItems :: listItems(${itemList}, ${currentListName})}">
                     </div>
                 </div>
             </div>
@@ -40,8 +34,8 @@
 <!-- Bootstrap JS and dependencies -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="/js/bootstrap/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <!-- External JavaScript file -->
-<script src="/js/main.js"></script>
+<script th:src="@{/js/main.js}"></script>
 </body>
 </html>

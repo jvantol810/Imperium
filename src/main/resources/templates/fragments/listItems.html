@@ -2,17 +2,20 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <!--Flexible bootstrap container-->
 <div class="col-xl-9 col-12" th:fragment="listItems (items, listName)">
-    <div class="row justify-content-center align-items-stretch mb-3" th:each="item : ${items}" th:classappend="${item.completed} ? 'completed'">
-        <div class="col-xl-8 col-11 border border-dark list-item">
-            <div class="row d-flex align-items-stretch" style="min-height: 100px;">
+    <div class="row justify-content-center mb-3" th:each="item : ${items}" th:classappend="${item.completed} ? 'completed'">
+        <div class="col-auto form-check px-0" style="top: 200px;">
+            <input class="form-check-input completed-checkbox" type="checkbox"
+                   th:checked="${item.completed}" th:data-url="@{'/list/' + ${listName} + '/item/' + ${item.id}}" onclick="completeItem(this)"/>
+        </div>
+        <div class="col-xl-8 col-11 list-item border border-white listmaster-fx-border-glow">
+            <div class="row d-flex">
                 <div class="col-xl-10 col-9 d-flex flex-column">
                     <div class="row">
-                        <div class="col-10 d-flex flex-column">
+                        <div class="col-12 d-flex flex-column">
                             <div class="row">
                                 <div class="col-1">
-                                    <input class="completed-checkbox" type="checkbox" th:checked="${item.completed}" th:data-url="@{'/list/' + ${listName} + '/item/' + ${item.id}}" onclick="completeItem(this)"/>
                                 </div>
-                                <div class="col-10">
+                                <div class="col-xl-11 col-11">
                                     <div class="row">
                                         <!--                        <div class="col-1">-->
                                         <!--                            <button class="btn btn-sm" type="button" data-toggle="collapse" th:attr="data-target='#description-' + ${item.id}">-->
@@ -21,10 +24,10 @@
                                         <!--                        </div>-->
                                         <div class="col-12">
                                             <div class="row">
-                                                <div class="col-10">
+                                                <div class="col-xl-10 col-12">
                                                     <span class="list-item-title" th:text="${item.title}"></span>
-                                                    <div class="list-item-description" th:id="'description-' + ${item.id}">
-                                                        <span th:text="${item.description}"></span>
+                                                    <div class="list-item-description text-wrap" th:id="'description-' + ${item.id}" th:text="${item.description}">
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -35,19 +38,22 @@
                         </div>
                     </div>
                     <div class="row mt-auto">
-                        <div class="col-xl-7 col-6">
-                            <i class="fas fa-calendar mr-1"></i><span class="small" th:text="${item.dueDate}"></span>
+                        <div class="col-xl-1">
+
+                        </div>
+                        <div class="col-xl-7 col-6" th:if="${item.dueDate != null && item.dueDate != ''}">
+                            <i class="fas fa-calendar ms-0 me-1"></i><span class="small" th:text="${item.dueDate}"></span>
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-2 col-3 d-flex flex-column">
-                    <div class="row flex-fill w-100 mx-0 d-flex">
-                        <button type="button" class="btn btn-primary flex-fill w-100" th:data-id="${item.id}" th:data-title="${item.title}" th:data-description="${item.description}" th:data-dueDate="${item.dueDate}" onclick="editItem(this.getAttribute('data-id'), this.getAttribute('data-title'), this.getAttribute('data-description'), this.getAttribute('data-dueDate'))">
+                <div class="col-xl-2 col-3 d-flex flex-column pe-0 list-item-buttons">
+                    <div class="row flex-fill w-100 mx-0 mb-2 d-flex">
+                        <button type="button" class="btn listmaster-btn-blue flex-fill w-100" th:data-id="${item.id}" th:data-title="${item.title}" th:data-description="${item.description}" th:data-dueDate="${item.dueDate}" onclick="editItem(this.getAttribute('data-id'), this.getAttribute('data-title'), this.getAttribute('data-description'), this.getAttribute('data-dueDate'))">
                             <i class="fas fa-pencil-alt"></i>
                         </button>
                     </div>
                     <div class="row flex-fill w-100 mx-0 d-flex">
-                        <button type="button" class="btn btn-danger flex-fill w-100" th:data-url="@{'/list/' + ${listName} + '/item/' + ${item.id}}" onclick="deleteItem(this)">
+                        <button type="button" class="btn listmaster-btn-red flex-fill w-100" th:data-url="@{'/list/' + ${listName} + '/item/' + ${item.id}}" onclick="deleteItem(this)">
                             <i class="fas fa-trash"></i>
                         </button>
                     </div>

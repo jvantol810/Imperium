@@ -1,0 +1,19 @@
+{
+  "name": "frontend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build:css": "sass scss/listmaster.scss ../src/main/resources/static/css/listmaster.css",
+    "watch:css": "sass --watch scss/listmaster.scss:../src/main/resources/static/css/listmaster.css"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "bootstrap": "^5.3.8"
+  },
+  "devDependencies": {
+    "sass": "^1.99.0"
+  }
+}

@@ -1,3 +1,8 @@
+document.addEventListener('DOMContentLoaded', function () {
+    bindEnterKeyToSaveButtons();
+});
+
+
 function sortList(listItemKey) {
     const listName = document.querySelector('h1').innerText;
 
@@ -46,9 +51,9 @@ function updateItem(itemId, title, description, dueDate, url) {
 
 function openAddItemModal() {
     const listName = document.querySelector('h1').innerText;
-    const saveButton = document.querySelector('#addItemModal .btn-primary');
+    const saveButton = document.querySelector('#add-item-modal .save-button');
     saveButton.setAttribute('data-url', `/list/${listName}/item`);
-    $('#addItemModal').modal('show');
+    $('#add-item-modal').modal('show');
 }
 
 function addItem(title, description, dueDate, url) {
@@ -97,8 +102,32 @@ function editItem(itemId, title, description, dueDate) {
     document.getElementById('editItemId').value = itemId;
 
     const listName = document.querySelector('h1').innerText;
-    const saveButton = document.querySelector('#editItemModal .btn-primary');
+    const saveButton = document.querySelector('#edit-item-modal .save-button');
     saveButton.setAttribute('data-url', `/list/${listName}/item/${itemId}`);
 
-    $('#editItemModal').modal('show');
+    $('#edit-item-modal').modal('show');
+}
+
+function bindEnterKeyToSaveButtons() {
+    document.querySelectorAll('.modal').forEach(modalEl => {
+        const saveBtn = modalEl.querySelector('.save-button');
+        let enterHandler = null;
+
+        modalEl.addEventListener('shown.bs.modal', () => {
+            enterHandler = (e) => {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    saveBtn.click();
+                }
+            };
+            modalEl.addEventListener('keydown', enterHandler);
+        });
+
+        modalEl.addEventListener('hidden.bs.modal', () => {
+            if (enterHandler) {
+                modalEl.removeEventListener('keydown', enterHandler);
+                enterHandler = null;
+            }
+        });
+    });
 }
