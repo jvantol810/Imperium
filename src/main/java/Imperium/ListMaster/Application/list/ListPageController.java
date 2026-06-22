@@ -30,14 +30,16 @@ public class ListPageController {
     @Autowired
     private ListViewService listViewService;
 
-    @GetMapping("/home")
-    public void getHomePage(HttpServletResponse response) throws IOException {
-        if(activeProfile.equals("local")) {
-            response.sendRedirect("/list-page?listName=TESTtodolist&viewName=To-Do");
-        }
-        else {
-            response.sendRedirect("/list-page?name=todolist&sortingField=creationTime&sortingMethod=DESCENDING");
-        }
+    @GetMapping("/")
+    public void getHomePage(
+            HttpServletResponse response,
+            @Value("${landing-page.list") String list,
+            @Value("${landing-page.view}") String view
+    ) throws IOException {
+        final String listName = activeProfile.equals("local") ? "TESTtodolist" : "todolist";
+        final String viewName = activeProfile.equals("local") ? "TEST To-Do" : "To-Do";
+
+        response.sendRedirect(String.format("/list-page?listName=%s&viewName=%s", listName, viewName));
     }
 
     @GetMapping("/list-page")

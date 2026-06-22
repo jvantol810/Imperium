@@ -5,7 +5,7 @@
   completed: false
   creationTime: null
   dueDate: "2025-06-16"
-  completedAt: null
+  completedAt: 1782056695440
 - id: "01924067-9662-7889-ade5-f1ae6256b52b"
   title: null
   description: null
@@ -117,7 +117,7 @@
   completed: false
   creationTime: null
   dueDate: "1749427200000"
-  completedAt: null
+  completedAt: 1782056564433
 - id: "7f6c0967-957f-4794-a24b-18bf473c2dc0"
   title: "hello me boy"
   description: "spongeboob"
@@ -189,7 +189,7 @@
   completed: false
   creationTime: 1781972508172
   dueDate: ""
-  completedAt: 1782054526448
+  completedAt: 1782056085262
 - id: "926de829-2f9a-496c-8795-59b1c35faf9b"
   title: "i aint old!"
   description: ""
@@ -199,8 +199,15 @@
   completedAt: 1781991792707
 - id: "6c082cf9-83f3-43c2-8cb1-4d8a5f83605b"
   title: "this is the newest"
-  description: ""
+  description: "this is a new todo item you know how it is"
   completed: false
   creationTime: 1781980389717
+  dueDate: ""
+  completedAt: null
+- id: "ff7ecdee-946d-45d7-847a-ad12478654f5"
+  title: "Plan trip to the slaughterhouse tomorrow"
+  description: "Grab slaughterhouse stuff for trip, and plan trip, you know"
+  completed: false
+  creationTime: 1782056718640
   dueDate: ""
   completedAt: null

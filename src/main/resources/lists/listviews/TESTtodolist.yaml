@@ -1,4 +1,4 @@
-- name: "To-Do"
+- name: "TEST To-Do"
   listName: "todolist"
   itemSorting:
       field: "creationTime"
