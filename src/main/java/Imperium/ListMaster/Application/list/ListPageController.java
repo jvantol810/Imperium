@@ -33,13 +33,10 @@ public class ListPageController {
     @GetMapping("/")
     public void getHomePage(
             HttpServletResponse response,
-            @Value("${landing-page.list") String list,
+            @Value("${landing-page.list}") String list,
             @Value("${landing-page.view}") String view
     ) throws IOException {
-        final String listName = activeProfile.equals("local") ? "TESTtodolist" : "todolist";
-        final String viewName = activeProfile.equals("local") ? "TEST To-Do" : "To-Do";
-
-        response.sendRedirect(String.format("/list-page?listName=%s&viewName=%s", listName, viewName));
+        response.sendRedirect(String.format("/list-page?listName=%s&viewName=%s", list, view));
     }
 
     @GetMapping("/list-page")
