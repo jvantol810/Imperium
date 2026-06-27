@@ -1,3 +1,7 @@
+# EXCEPTIONS
+!gradle/wrapper/gradle-wrapper.jar
+
+# IGNORED
 frontend/node_modules/
 
 # Compiled class file
