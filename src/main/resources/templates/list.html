@@ -7,6 +7,8 @@
     <link href="/css/listmaster.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link href="/css/liststyles.css" rel="stylesheet">
+    <!-- Favicon based on env -->
+    <link rel="icon" type="image/x-icon" th:href="@{'/'+${@environment.getProperty('paths.favicon')}}">
 </head>
 <body>
     <div class="container">

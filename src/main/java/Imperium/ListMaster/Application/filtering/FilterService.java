@@ -29,7 +29,7 @@ public class FilterService {
 
     private static final Logger logger = LoggerFactory.getLogger(FilterService.class);
 
-    @Value("${filterSets.filePath}")
+    @Value("${paths.filter-sets}")
     private String filterSetsFile;
 
     public List<FilterSet> getFilterSets(List<String> pFilterSetNames) throws IOException {

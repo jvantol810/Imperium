@@ -28,7 +28,7 @@ public class ListService {
 
     private static final Logger logger = LoggerFactory.getLogger(ListService.class);
 
-    @Value("${appdata-path}")
+    @Value("${paths.appdata}")
     private String dataDirectory;
 
     private final FilterService filterService;

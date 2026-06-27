@@ -1,7 +1,6 @@
 package Imperium.ListMaster.Application.listview;
 
 import Imperium.ListMaster.Application.filtering.FilterService;
-import Imperium.ListMaster.Application.filtering.model.FilterSet;
 import Imperium.ListMaster.Application.listview.model.ListView;
 import Imperium.ListMaster.Application.listview.model.ListViewDTO;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -21,7 +20,7 @@ import java.util.*;
 public class ListViewService {
     private static final Logger logger = LoggerFactory.getLogger(ListViewService.class);
 
-    @Value("${list-views-path}")
+    @Value("${paths.list-view}")
     private String listViewDirectory;
 
     @Autowired
