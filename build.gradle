@@ -68,14 +68,12 @@ tasks.register("dockerCompose") {
 
 // Task: Run Docker container
 tasks.register("runDockerComposeDetached", Exec) {
-	dependsOn buildDockerImage
-	commandLine 'docker', 'compose', 'up', '-d'
+	commandLine 'docker', 'compose', 'up', '--build', '-d'
 }
 
-tasks.register("dockerComposeDetached") {
+tasks.register("rebuildApplication") {
+	dependsOn build
 	dependsOn runDockerComposeDetached
-	group = 'docker'
-	description = 'Starts a detached run'
 }
 
 tasks.register("runDockerComposeDown", Exec) {
